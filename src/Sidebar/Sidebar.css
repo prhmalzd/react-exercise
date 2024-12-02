@@ -1,0 +1,68 @@
+.sidebar-container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+    gap: 10px;
+}
+
+.categories ul li , .brand ul li {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.input-range {
+    width: 70%;
+}
+
+.range-container {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+.range-container input {
+    height: 20px;
+    width: 30%;
+}
+
+
+.topSelling {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.topSelling-product {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+}
+.topSelling-product img {
+    width: 70px;
+}
+
+.topSelling-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    font-size: .8rem;
+}

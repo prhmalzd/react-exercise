@@ -1,0 +1,15 @@
+.product {
+    padding: 10px;
+    border: 1px solid black;
+  }
+  
+  .product-img {
+    width: 200px;
+  }
+  
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
