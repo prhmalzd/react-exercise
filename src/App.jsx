@@ -16,11 +16,13 @@ function App() {
   return (
     <>
       <Navbar searchHandler ={searchHandler}/>
-      <Routes>
-        <Route path='/' element={<HomePage search={search}/>}/>
-        <Route path='/product/:productId' element={<ProductPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-      </Routes>
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<HomePage search={search}/>}/>
+          <Route path='/product/:productId' element={<ProductPage/>}/>
+          <Route path='/login' element={<LoginPage/>}/>
+        </Routes>
+      </div>
     </>
   )
 }

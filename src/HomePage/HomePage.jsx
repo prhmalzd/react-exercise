@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import './HomePage.css'
-import ProductCard from '../ProductCard/ProductCard'
-import Sidebar from '../Sidebar/Sidebar'
+import ProductCard from './ProductCard/ProductCard'
+import Sidebar from './Sidebar/Sidebar'
 import {http} from '../Fetch/fetchProducts'
-import Pagination from '../Pagination/Pagination'
+import Pagination from './Pagination/Pagination'
 
 function HomePage({search}) {
   const [products , setProducts] = useState([])
@@ -84,7 +84,6 @@ function HomePage({search}) {
 
   return (
     <>
-      <div className='container'>
         <Sidebar products={products} fetchProducts={fetchProducts}/>
         <div>
             <select onClick={limitPdoductsHandler}>
@@ -102,7 +101,6 @@ function HomePage({search}) {
           </div>
           <Pagination counter={paginationCounter} page={page} paginationHandler={paginationHandler}/>
         </div>
-      </div>
     </>
   )
 }

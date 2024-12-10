@@ -22,20 +22,40 @@ function Navbar ({searchHandler}) {
 
     return (
         <nav className='navbar'>
-            <div className='navbar-searchContainer'>
-                <select className='navbar-select'>
-                    <option>All Categories</option>
-                </select>
-                <input className='navbar-search' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
-                <button className='navbar-btn' onClick={searchSubmitHandler}>search</button>
+            <div className='navbar-information'>
+                <div className='address-section'>
+                    <div>+021-95-51-84</div>
+                    <div>email@gmail.com</div>
+                    <div>1734 Stonecoal Road</div>
+                </div>
+                <div className='auth-section'>
+                    <div>USD</div>
+                    <div onClick={() => navigate(`./login`)}>Login</div>
+                </div>
+            </div>
+            <div className='navbar-middle'>
+                <div className='logo'>Electro</div>
+                <div className='search-section'>
+                    <select className='navbar-select'>
+                        <option>All Categories</option>
+                    </select>
+                    <input className='input-search' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
+                    <button className='navbar-btn' onClick={searchSubmitHandler}>search</button>
+                </div>
+                <div className='card-section'>
+                    <div className='wishlist'>Wishlist</div>
+                    <div className='cart'>Cart</div>
+                </div>
             </div>
             <div className='navbar-menu'>
                 <ul>
                     {liItmes}
                 </ul>
             </div>
-            <div>
-                <span  onClick={() => navigate(`./login`)}>Login</span>
+            <div className='path-section'>
+                <span>Home /</span>
+                <span>All Categories /</span>
+                <span>Accessories</span>
             </div>
         </nav>
     )

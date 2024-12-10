@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { http } from '../Fetch/fetchProducts'
+import { http } from '../../Fetch/fetchProducts'
 import './Sidebar.css'
 
 const brands = ['Samsung' , 'LG' , 'Sony' , 'Samsung' , 'LG' , 'Sony']
