@@ -42,11 +42,12 @@ function HomePage({search}) {
 
   function fetchProducts (categoriyID , page = 1 , limit = limitProducts , search = searchText) {
     
+    setCategoryIds(categoriyID)
+    
     setPage(page)
     setIsLoading(true)
     let url = `https://kaaryar-ecom.liara.run/v1/products?page=${page}`
     if (categoriyID) {
-      setCategoryIds(categoriyID)
       url += `&category=${categoriyID}`
     }
     if (limit) {

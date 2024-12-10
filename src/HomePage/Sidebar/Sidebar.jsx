@@ -6,7 +6,6 @@ const brands = ['Samsung' , 'LG' , 'Sony' , 'Samsung' , 'LG' , 'Sony']
 
 function Sidebar ({products , fetchProducts}) {
     const [categories , setCategories] = useState([])
-    const [selected , setSelected] = useState([])
 
     useEffect(() => {
         let ignore = false
@@ -31,18 +30,8 @@ function Sidebar ({products , fetchProducts}) {
     function selectedHandler (event) {
         let name = event.target.name
         let id = event.target.id
-        let selectedOption = {name , id}
-        let newSelected
-        
-        if (event.target.checked) {
-            newSelected = [...selected , selectedOption]
-            setSelected(newSelected)
-        }
-        else {
-            newSelected = selected.filter(item => {
-                if (item.name !== name) return true
-            })
-            setSelected(newSelected)
+
+        if (!event.target.checked) {
             id = undefined
         }
         fetchProducts(id)
