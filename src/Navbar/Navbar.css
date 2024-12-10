@@ -1,4 +1,6 @@
 .navbar {
+    position: absolute;
+    top: 0;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -46,4 +48,8 @@
     gap: 20px;
     padding: 20px 0;
     border-bottom: 1px solid rgb(198, 198, 198);
+}
+
+.navbar-menu ul li {
+    cursor: pointer;
 }

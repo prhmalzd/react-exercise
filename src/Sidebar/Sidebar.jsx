@@ -1,23 +1,70 @@
+import { useEffect, useState } from 'react'
+import { http } from '../Fetch/fetchProducts'
 import './Sidebar.css'
 
-const categories = ['Laptops' , 'Smartphones' , 'Cameras' , 'Accessories' , 'Laptops' , 'Smartphones']
 const brands = ['Samsung' , 'LG' , 'Sony' , 'Samsung' , 'LG' , 'Sony']
 
-function Sidebar ({products}) {
+function Sidebar ({products , fetchProducts}) {
+    const [categories , setCategories] = useState([])
+    const [selected , setSelected] = useState([])
+
+    useEffect(() => {
+        let ignore = false
+        // loading handler
+        http('https://kaaryar-ecom.liara.run/v1/categories')
+        .then(data => {
+        if (!ignore) {
+            setCategories(data)
+        }
+        })
+        .catch(err => {
+        // error handler
+        })
+        .finally(() => {
+        // loading handler
+        })
+        return () => {
+        ignore = true
+        }
+    } , [])
+
+    function selectedHandler (event) {
+        let name = event.target.name
+        let id = event.target.id
+        let selectedOption = {name , id}
+        let newSelected
+        
+        if (event.target.checked) {
+            newSelected = [...selected , selectedOption]
+            setSelected(newSelected)
+        }
+        else {
+            newSelected = selected.filter(item => {
+                if (item.name !== name) return true
+            })
+            setSelected(newSelected)
+            id = undefined
+        }
+        fetchProducts(id)
+    }
 
     const categories_items = categories.map((cate , index) => {
         return (
-            <li key={cate + index}>
-                <input type='checkbox' name={cate} />
-                <label htmlFor={cate} >{cate}</label>
+            <li key={cate._id}>
+                <label htmlFor={cate.name} >
+                    <input id={cate._id} type='checkbox' name={cate.name} onChange={selectedHandler}/>
+                    {cate.name}
+                </label>
             </li>
         )
     })
     const brands_items = brands.map((brand , index) => {
         return (
             <li key={brand + index}>
-                <input type='checkbox' name={brand} />
-                <label htmlFor={brand} >{brand}</label>
+                <label htmlFor={brand} >
+                    <input type='checkbox' name={brand}/>
+                    {brand}
+                </label>
             </li>
         )
     })

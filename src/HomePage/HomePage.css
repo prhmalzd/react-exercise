@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-top : 250px
+  }
+  
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,4 +1,5 @@
 .product {
+    cursor: pointer;
     padding: 10px;
     border: 1px solid black;
   }
