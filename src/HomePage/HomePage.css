@@ -4,7 +4,7 @@
   }
   
   .container {
-    width: 100vw;
+    width: 70vw;
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -17,4 +17,40 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+  }
+
+  .products-howtoshow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .products-view {
+    display: flex;
+    gap: 10px;
+  }
+  .products-view span {
+    cursor: pointer;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(149, 149, 149, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .container {
+      margin-top: 170px;
+    }
+    .products-container {
+      grid-template-columns: none
+    }
   }

@@ -8,14 +8,18 @@ import LoginPage from './Auth/LoginPage/LoginPage'
 
 function App() {
   const [search , setSearch] = useState('')
+  const [isLight , setIsLight] = useState(true)
 
   function searchHandler (text) {
     setSearch(text)
   }
+  function changeTheme (isLight) {
+    setIsLight(isLight)
+  }
 
   return (
-    <>
-      <Navbar searchHandler ={searchHandler}/>
+    <div className={`holder ${isLight ? '' : 'dark-theme'}`}>
+      <Navbar searchHandler ={searchHandler} changeTheme={changeTheme}/>
       <div className='container'>
         <Routes>
           <Route path='/' element={<HomePage search={search}/>}/>
@@ -23,7 +27,7 @@ function App() {
           <Route path='/login' element={<LoginPage/>}/>
         </Routes>
       </div>
-    </>
+    </div>
   )
 }
 

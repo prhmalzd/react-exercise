@@ -9,6 +9,7 @@ function ProductCard ({info}) {
   function productClicked () {
     navigate(`./product/${info._id}`)
     setProduct(info)
+    console.log(info)
   }
 
     return (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { http } from '../../Fetch/fetchProducts'
-import './Sidebar.css'
+import './FilterSection.css'
 
 const brands = ['Samsung' , 'LG' , 'Sony' , 'Samsung' , 'LG' , 'Sony']
 
-function Sidebar ({products , fetchProducts}) {
+function FilterSection ({ categoryIds, fetchProducts}) {
     const [categories , setCategories] = useState([])
 
     useEffect(() => {
@@ -38,10 +38,11 @@ function Sidebar ({products , fetchProducts}) {
     }
 
     const categories_items = categories.map((cate , index) => {
+        let checked = categoryIds === cate._id
         return (
             <li key={cate._id}>
                 <label htmlFor={cate.name} >
-                    <input id={cate._id} type='checkbox' name={cate.name} onChange={selectedHandler}/>
+                    <input id={cate._id} type='checkbox' checked={checked} name={cate.name} onChange={selectedHandler}/>
                     {cate.name}
                 </label>
             </li>
@@ -58,23 +59,8 @@ function Sidebar ({products , fetchProducts}) {
         )
     })
 
-    const topSelling_products = products.map((product , index) => {
-        if (index < 3) {
-            return (
-                <div className='topSelling-product' key={product._id}>
-                    <img src={product.images[0]}/>
-                    <div className='topSelling-info'>
-                        <span className='categoryName'>{product.category.name}</span>
-                        <span className='productName'>{product.name}</span>
-                        <span className='productPrice'>{Math.floor(product.price)}</span>
-                    </div>
-                </div>
-            )
-        }
-    })
-
     return (
-        <div className='sidebar-container'>
+        <div className='filter-container'>
             <div className='categories'>
                 <span className='title'>CATEGORIES</span>
                 <ul>{categories_items}</ul>
@@ -92,12 +78,8 @@ function Sidebar ({products , fetchProducts}) {
                 <span className='title'>BRAND</span>
                 <ul>{brands_items}</ul>
             </div>
-            <div className='topSellingContainer'>
-                <span className='title'>TOP SELLING</span>
-                <div className='topSelling'>{topSelling_products}</div>
-            </div>
         </div>
     )
 }
 
-export default Sidebar
+export default FilterSection

@@ -1,5 +1,6 @@
-.sidebar-container {
-    width: 300px;
+.filter-container {
+    width: 200px;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -39,30 +40,4 @@
 .range-container input {
     height: 20px;
     width: 30%;
-}
-
-
-.topSelling {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 20px;
-}
-
-.topSelling-product {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 20px;
-}
-.topSelling-product img {
-    width: 70px;
-}
-
-.topSelling-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    font-size: .8rem;
 }

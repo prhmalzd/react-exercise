@@ -4,12 +4,15 @@ import ProductCard from './ProductCard/ProductCard'
 import Sidebar from './Sidebar/Sidebar'
 import {http} from '../Fetch/fetchProducts'
 import Pagination from './Pagination/Pagination'
+import FilterSection from './FilterSection/FilterSection'
 
 function HomePage({search}) {
   const [products , setProducts] = useState([])
   const [isLoading , setIsLoading] = useState(false)
   const [error , setError] = useState(undefined)
   const [paginationCounter , setPaginationCounter] = useState(0)
+  const [iswidthBig , setIsWidthBig] = useState(true)
+  const [isFilterOpen , setIsFilterOpen] = useState(false)
 
 
   // for tracking pages and ids
@@ -20,7 +23,6 @@ function HomePage({search}) {
 
   useEffect(() => {
     let ignore = false
-    
     if (!ignore) {
       fetchProducts()
     }
@@ -41,6 +43,15 @@ function HomePage({search}) {
   } , [search])
 
   function fetchProducts (categoriyID , page = 1 , limit = limitProducts , search = searchText) {
+    
+    if (window.innerWidth < 600) {
+      limit = 100
+      setLimitProducts(100)
+      setIsWidthBig(false)
+    }
+    else {
+      setIsWidthBig(true)
+    }
     
     setCategoryIds(categoriyID)
     
@@ -83,25 +94,49 @@ function HomePage({search}) {
     fetchProducts(categoryIds , 1 , number , searchText)
   }
 
+  function toggleFilter (event) {
+    if (event.target.tagName === 'BUTTON' || event.target.className === 'overlay') {
+      setIsFilterOpen(!isFilterOpen)
+    }
+  }
+
   return (
     <>
-        <Sidebar products={products} fetchProducts={fetchProducts}/>
+        {iswidthBig && <Sidebar products={products} fetchProducts={fetchProducts}/>}
         <div>
-            <select onClick={limitPdoductsHandler}>
-              <option>10</option>
-              <option>20</option>
-            </select>
+          <div className='products-howtoshow'>
+            {
+            iswidthBig ?
+            <div>
+              <span>Show: </span>
+              <select onClick={limitPdoductsHandler}>
+                <option>10</option>
+                <option>20</option>
+              </select>
+            </div>
+            :
+            <div>
+              <button onClick={toggleFilter}>Filter</button>
+            </div>
+            }
+            <div className='products-view'>
+              <span>Grid</span>
+              <span>List</span>
+            </div>
+          </div>
           <div className='products-container'>
             {isLoading && <div className='loading'>Loading...</div>}
-            {/* {error && <div className='loading'>We have Error {error}</div>} */}
             {products.map(product => {
               return (
                 <ProductCard key={product._id} info={product}/>
               )
             })}
           </div>
-          <Pagination counter={paginationCounter} page={page} paginationHandler={paginationHandler}/>
+          {paginationCounter > 1 && <Pagination counter={paginationCounter} page={page} paginationHandler={paginationHandler}/>}
         </div>
+        {isFilterOpen && <div className='overlay' onClick={toggleFilter}>
+          <FilterSection categoryIds={categoryIds} products={products} fetchProducts={fetchProducts}/>
+        </div>}
     </>
   )
 }

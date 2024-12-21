@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router'
+import { sunIcon , moonIcon, menuIconDay, menuIconNight, cartNight, cartDay, closeIconNight, closeIconDay } from '../icons/Icons'
 
 const lists = ['Home' , 'Hot Deals' , 'Categories' , 'Laptops' , 'Smartphones' , 'Cameras' , 'Accessories']
 
-function Navbar ({searchHandler}) {
+function Navbar ({searchHandler , changeTheme}) {
     const [searchInput , setSearchInput] = useState('')
+    const [isLight , setIsLight] = useState(true)
+    const [isMenuOpen , setIsmenuOpen] = useState(false)
+
     const navigate = useNavigate()
 
     const liItmes = lists.map(li => <li key={li}>{li}</li>)
@@ -19,45 +23,66 @@ function Navbar ({searchHandler}) {
         searchHandler(searchInput)
     }
 
+    function changeThemeHandler () {
+        setIsLight(!isLight)
+        changeTheme(!isLight)
+    }
+
+    function toggleMenu () {
+        setIsmenuOpen(!isMenuOpen)
+    }
+
 
     return (
-        <nav className='navbar'>
-            <div className='navbar-information'>
-                <div className='address-section'>
-                    <div>+021-95-51-84</div>
-                    <div>email@gmail.com</div>
-                    <div>1734 Stonecoal Road</div>
+        <>
+            <nav className='navbar'>
+                <div className='navbar-middle'>
+                    <div className='logo' onClick={() => navigate(`./`)}>Electro</div>
+                    <div className='search-section'>
+                        <select className='navbar-select'>
+                            <option>All Categories</option>
+                        </select>
+                        <input className='input-search' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
+                        <button className='navbar-btn' onClick={searchSubmitHandler}>search</button>
+                    </div>
+                    <div className='card-section'>
+                        <div className='lightdarkbtn' onClick={changeThemeHandler}>{isLight ? sunIcon : moonIcon}</div>
+                        {isLight ? cartNight : cartDay}
+                        <button className='loginbtn' onClick={() => navigate(`./login`)}>Login</button>
+                    </div>
                 </div>
-                <div className='auth-section'>
-                    <div>USD</div>
-                    <div onClick={() => navigate(`./login`)}>Login</div>
+                <div className='navbar-menu'>
+                    <ul>
+                        {liItmes}
+                    </ul>
                 </div>
-            </div>
-            <div className='navbar-middle'>
-                <div className='logo'>Electro</div>
-                <div className='search-section'>
-                    <select className='navbar-select'>
-                        <option>All Categories</option>
-                    </select>
-                    <input className='input-search' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
-                    <button className='navbar-btn' onClick={searchSubmitHandler}>search</button>
+                <div className='path-section'>
+                    <span>Home /</span>
+                    <span>All Categories /</span>
                 </div>
-                <div className='card-section'>
-                    <div className='wishlist'>Wishlist</div>
-                    <div className='cart'>Cart</div>
+            </nav>
+            <div className='navbar-mobile'>
+                <div className='navbar-mobile-icons'>
+                    <div className='openMenubtn' onClick={toggleMenu}>{isLight ? menuIconNight : menuIconDay}</div>
+                    <div className='navbar-mobile-auth'>
+                        <div className='lightdarkbtn' onClick={changeThemeHandler}>{isLight ? sunIcon : moonIcon}</div>
+                        {isLight ? cartNight : cartDay}
+                        <button className='loginbtn' onClick={() => navigate(`./login`)}>Login</button>
+                    </div>
                 </div>
+                <div className='logo' onClick={() => navigate(`./`)}>Electro</div>
+                {isMenuOpen && <div className='sideMenu'>
+                    <div className='closeMenu' onClick={toggleMenu}>{isLight ? closeIconNight : closeIconDay}</div>
+                    <div className='menuOptions'>
+                        <span onClick={() => navigate(`./`)}>Home</span>
+                        <span>Categories</span>
+                        <span>Cart</span>
+                        <span>Contact us</span>
+                        <span onClick={() => navigate(`./login`)}>Login</span>
+                    </div>
+                </div>}
             </div>
-            <div className='navbar-menu'>
-                <ul>
-                    {liItmes}
-                </ul>
-            </div>
-            <div className='path-section'>
-                <span>Home /</span>
-                <span>All Categories /</span>
-                <span>Accessories</span>
-            </div>
-        </nav>
+        </>
     )
 }
 
