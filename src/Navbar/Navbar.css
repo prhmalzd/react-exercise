@@ -120,7 +120,7 @@
       display: none;
     }
     .navbar-mobile {
-        position: absolute;
+        position: fixed;
         top: 0;
         width: 100vw;
         height: 150px;
