@@ -109,7 +109,13 @@
     padding-top: 40px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 950px) {
+    .navbar-middle {
+        flex-direction: column;
+    }
+  }
+
+@media only screen and (max-width: 750px) {
     .navbar {
       display: none;
     }

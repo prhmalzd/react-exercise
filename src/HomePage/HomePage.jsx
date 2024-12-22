@@ -6,6 +6,8 @@ import {http} from '../Fetch/fetchProducts'
 import Pagination from './Pagination/Pagination'
 import FilterSection from './FilterSection/FilterSection'
 
+let debounceTimer
+
 function HomePage({search}) {
   const [products , setProducts] = useState([])
   const [isLoading , setIsLoading] = useState(false)
@@ -30,6 +32,12 @@ function HomePage({search}) {
       ignore = true
     }
   } , [])
+  
+  useEffect(() => {
+    window.addEventListener('resize' , () => {
+      debounce()
+    })
+  } , [])
 
   useEffect(() => {
     let ignore = false
@@ -42,9 +50,17 @@ function HomePage({search}) {
     }
   } , [search])
 
+  function debounce () {
+    clearTimeout(debounceTimer)
+    
+    debounceTimer = setTimeout(() => {
+      fetchProducts()
+    } , 800)
+}
+
   function fetchProducts (categoriyID , page = 1 , limit = limitProducts , search = searchText) {
     
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 950) {
       limit = 100
       setLimitProducts(100)
       setIsWidthBig(false)

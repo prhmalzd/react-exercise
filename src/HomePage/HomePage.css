@@ -46,6 +46,16 @@
     overflow-y: scroll;
   }
   
+  
+  @media only screen and (max-width: 750px) {
+    .container {
+      margin-top: 170px;
+    }
+    .products-container {
+      grid-template-columns: repeat(2, 1fr)
+    }
+  }
+
   @media only screen and (max-width: 600px) {
     .container {
       margin-top: 170px;
