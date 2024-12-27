@@ -28,7 +28,6 @@ function Sidebar ({products , fetchProducts}) {
     } , [])
 
     function selectedHandler (event) {
-        let name = event.target.name
         let id = event.target.id
 
         if (!event.target.checked) {

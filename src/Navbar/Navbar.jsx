@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router'
 import { sunIcon , moonIcon, menuIconDay, menuIconNight, cartNight, cartDay, closeIconNight, closeIconDay } from '../icons/Icons'
 
 const lists = ['Home' , 'Hot Deals' , 'Categories' , 'Laptops' , 'Smartphones' , 'Cameras' , 'Accessories']
 
+let debounceTimerForSearch
+
 function Navbar ({searchHandler , changeTheme}) {
-    const [searchInput , setSearchInput] = useState('')
     const [isLight , setIsLight] = useState(true)
     const [isMenuOpen , setIsmenuOpen] = useState(false)
 
@@ -16,11 +17,15 @@ function Navbar ({searchHandler , changeTheme}) {
 
     function searchChangeHandler (e) {
         let value  = e.target.value
-        setSearchInput(value)
+        debounce(value)
     }
 
-    function searchSubmitHandler () {
-        searchHandler(searchInput)
+    function debounce (searchInput) {
+        clearTimeout(debounceTimerForSearch)
+        
+        debounceTimerForSearch = setTimeout(() => {
+            searchHandler(searchInput)
+        } , 800)
     }
 
     function changeThemeHandler () {
@@ -39,11 +44,7 @@ function Navbar ({searchHandler , changeTheme}) {
                 <div className='navbar-middle'>
                     <div className='logo' onClick={() => navigate(`./`)}>Electro</div>
                     <div className='search-section'>
-                        <select className='navbar-select'>
-                            <option>All Categories</option>
-                        </select>
                         <input className='input-search' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
-                        <button className='navbar-btn' onClick={searchSubmitHandler}>search</button>
                     </div>
                     <div className='card-section'>
                         <div className='lightdarkbtn' onClick={changeThemeHandler}>{isLight ? sunIcon : moonIcon}</div>
@@ -71,6 +72,7 @@ function Navbar ({searchHandler , changeTheme}) {
                     </div>
                 </div>
                 <div className='logo' onClick={() => navigate(`./`)}>Electro</div>
+                <input className='input-search-mobile' type='search' placeholder='Search here...' onChange={searchChangeHandler}/>
                 {isMenuOpen && <div className='sideMenu'>
                     <div className='closeMenu' onClick={toggleMenu}>{isLight ? closeIconNight : closeIconDay}</div>
                     <div className='menuOptions'>

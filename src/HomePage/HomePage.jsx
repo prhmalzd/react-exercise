@@ -6,7 +6,7 @@ import {http} from '../Fetch/fetchProducts'
 import Pagination from './Pagination/Pagination'
 import FilterSection from './FilterSection/FilterSection'
 
-let debounceTimer
+let debounceTimerForWindowWidth
 
 function HomePage({search}) {
   const [products , setProducts] = useState([])
@@ -34,8 +34,9 @@ function HomePage({search}) {
   } , [])
   
   useEffect(() => {
+    let width = window.innerWidth
     window.addEventListener('resize' , () => {
-      debounce()
+      if (window.innerWidth != width) debounce()
     })
   } , [])
 
@@ -51,9 +52,9 @@ function HomePage({search}) {
   } , [search])
 
   function debounce () {
-    clearTimeout(debounceTimer)
+    clearTimeout(debounceTimerForWindowWidth)
     
-    debounceTimer = setTimeout(() => {
+    debounceTimerForWindowWidth = setTimeout(() => {
       fetchProducts()
     } , 800)
 }

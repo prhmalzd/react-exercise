@@ -43,7 +43,9 @@
     width: 300px;
     border: 1px solid;
     padding-left: 10px;
+    border-radius: 20px;
 }
+
 
 .navbar-btn {
     color: white;
@@ -123,7 +125,6 @@
         position: fixed;
         top: 0;
         width: 100vw;
-        height: 150px;
         display: flex;
         flex-direction: column;
         justify-content: start;
@@ -139,5 +140,11 @@
     .navbar-mobile-auth {
         display: flex;
         gap: 20px;
+    }
+    .input-search-mobile {
+        border-radius: 20px;
+        border: 1px solid;
+        padding-left: 10px;
+        height: 30px;
     }
   }
