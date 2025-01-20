@@ -1,0 +1,43 @@
+.filter-container {
+    width: 200px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+    gap: 30px;
+}
+
+.categories ul li , .brand ul li {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.input-range {
+    width: 70%;
+}
+
+.range-container {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+.range-container input {
+    height: 20px;
+    width: 30%;
+}

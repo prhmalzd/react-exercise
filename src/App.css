@@ -1,0 +1,33 @@
+:root {
+    --color: #213547;
+    --bg-color: #ffffff;
+    --br-color: #213547;
+}
+
+.dark-theme {
+    --color: rgba(255, 255, 255, 0.87);
+    --bg-color: #213547;
+    --br-color: rgba(255, 255, 255, 0.87);
+}
+  
+* {
+    color: var(--color);
+    background-color: var(--bg-color);
+    border-color: var(--br-color);
+    transition: .3s all;
+}
+
+.holder {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-top : 350px
+  }

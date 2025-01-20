@@ -1,0 +1,24 @@
+.pagination-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.page {
+    cursor: pointer;
+    padding: 5px 15px;
+    border: 1px solid;
+}
+
+.selected {
+    background-color: rgb(198, 80, 80);
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .pagination-container  {
+        flex-direction: column;
+    }
+  }

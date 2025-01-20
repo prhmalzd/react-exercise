@@ -1,0 +1,47 @@
+.navbar-icon-section {
+    display: flex;
+    gap: 20px;
+}
+
+.lightdarkbtn svg {
+    color: #213547;
+}
+
+.navbar-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-search {
+    height: 35px;
+    border: none;
+    width: 500px;
+    border: 1px solid;
+    padding-left: 10px;
+    border-radius: 20px;
+}
+
+.search-results-module {
+    position: absolute;
+    top: 105px;
+    width: 480px;
+    border: 2px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.search-results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
