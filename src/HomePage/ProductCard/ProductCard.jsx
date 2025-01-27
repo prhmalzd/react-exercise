@@ -7,19 +7,27 @@ import { useEffect, useState } from 'react'
 
 ProductCard.propTypes = {
   info : PropTypes.object,
-  changeSearchText: PropTypes.func
+  changeSearchText: PropTypes.func,
+  changeCardAmount : PropTypes.func
 }
 
-function ProductCard ({info , changeSearchText}) {
-  const [cartAmountValue , setCartAmountValue] = useState(1)
+function ProductCard ({info , changeSearchText , changeCardAmount}) {
+  const [cartAmountValue , setCartAmountValue] = useState(0)
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    let storagedInfo = JSON.parse(localStorage.getItem(info._id))
+    let storagedInfo = JSON.parse(localStorage.getItem('items'))
+    let allAmount = 0
     if (storagedInfo) {
-      setCartAmountValue(storagedInfo.amount)
+      storagedInfo.forEach((item) => {
+        if (item.info._id == info._id) {
+          setCartAmountValue(item.amount)
+        }
+        allAmount += item.amount
+      })
     }
+    changeCardAmount(allAmount)
   }, [])
 
   function productClicked (event) {
@@ -30,8 +38,48 @@ function ProductCard ({info , changeSearchText}) {
     console.log(info)
   }
   function addToCartClicked () {
+    if (cartAmountValue == 0) return
     const productInfo = {amount : cartAmountValue , info}
-    localStorage.setItem(info._id , JSON.stringify(productInfo))
+    const items = JSON.parse(localStorage.getItem('items'))
+    let allAmount = 0
+    if (items) {
+      let hasIt = false
+      items.forEach((item) => {
+        if (item.info._id === info._id) {
+          item.amount = cartAmountValue
+          hasIt = true
+        }
+        allAmount += item.amount
+      })
+      if (!hasIt) {
+        items.push(productInfo)
+        allAmount += cartAmountValue
+      }
+      localStorage.setItem('items' , JSON.stringify(items))
+    }
+    else {
+      localStorage.setItem('items' , JSON.stringify([productInfo]))
+      allAmount = cartAmountValue
+    }
+
+    changeCardAmount(allAmount)
+  }
+  function removeFromCartClicked () {
+    const items = JSON.parse(localStorage.getItem('items'))
+    if (!items) return
+    let newItems
+    let allAmount = 0
+    items.forEach((item , index) => {
+      if (item.info._id === info._id) {
+        let first = items.slice(0 , index)
+        let last = items.slice(index+1)
+        newItems = first.concat(last)
+      }
+      else allAmount += item.amount
+    })
+    localStorage.setItem('items' , JSON.stringify(newItems))
+    setCartAmountValue(0)
+    changeCardAmount(allAmount)
   }
 
   function increaseCartAmount () {
@@ -39,7 +87,7 @@ function ProductCard ({info , changeSearchText}) {
   }
 
   function decreaseCartAmount () {
-    if (cartAmountValue == 1) return
+    if (cartAmountValue < 2) return
     setCartAmountValue(cartAmountValue - 1)
   }
 
@@ -74,7 +122,10 @@ function ProductCard ({info , changeSearchText}) {
                 <span>{cartAmountValue}</span>
                 <button className='cart' onClick={increaseCartAmount}>+</button>
               </div>
-              <button className='product-addToCart-btn cart' onClick={addToCartClicked}>Add to Cart</button>
+              <div className='cardButtonsContainer'>
+                {cartAmountValue > 0 && <button className='product-removeCart-btn cart' onClick={removeFromCartClicked}>Remove</button>}
+                <button className='product-addToCart-btn cart' onClick={addToCartClicked}>Add to Cart</button>
+              </div>
             </div>
         </div>
     )

@@ -9,18 +9,22 @@ import { ContextProvider } from './ContextApi/Context'
 
 function App() {
   const [isLight , setIsLight] = useState(true)
+  const [changeCard , setChangeCard] = useState(0)
 
   function changeTheme (isLight) {
     setIsLight(isLight)
+  }
+  function changeCardAmount (amount) {
+    setChangeCard(amount)
   }
 
   return (
     <ContextProvider>
       <div className={`holder ${isLight ? '' : 'dark-theme'}`}>
-        <Navbar changeTheme={changeTheme}/>
+        <Navbar changeTheme={changeTheme} changeCard={changeCard}/>
         <div className='container'>
           <Routes>
-            <Route path='/' element={<HomePage/>}/>
+            <Route path='/' element={<HomePage changeCardAmount={changeCardAmount}/>}/>
             <Route path='/product/:productId' element={<ProductPage/>}/>
             <Route path='/login' element={<LoginPage/>}/>
           </Routes>

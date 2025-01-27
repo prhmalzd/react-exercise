@@ -13,7 +13,7 @@ Navbar.propTypes = {
     changeTheme : PropTypes.func
 }
 
-function Navbar ({changeTheme}) {
+function Navbar ({changeTheme , changeCard}) {
     const [isLight , setIsLight] = useState(true)
     const [isMenuOpen , setIsmenuOpen] = useState(false)
 
@@ -34,7 +34,7 @@ function Navbar ({changeTheme}) {
                 <div className='navbar-main'>
                     <NavbarLogo/>
                     <NavbarSearch/>
-                    <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight}/>
+                    <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight} changeCard={changeCard}/>
                 </div>
                 <div className='navbar-menu'>
                     <ul>
@@ -49,7 +49,7 @@ function Navbar ({changeTheme}) {
             <div className='navbar-mobile'>
                 <div className='navbar-mobile-icons'>
                     <div className='openMenubtn' onClick={toggleMenu}>{isLight ? menuIconNight : menuIconDay}</div>
-                    <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight}/>
+                    <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight} changeCard={changeCard}/>
                 </div>
                 <NavbarLogo/>
                 <NavbarSearch onMobile={true}/>

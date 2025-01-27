@@ -45,3 +45,21 @@
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.cardCountainer {
+    height: 1px;
+}
+
+.cartAmount {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    border-radius: 100px;
+    font-weight: 900;
+    position: relative;
+    top: -50px;
+    left: 20px;
+}

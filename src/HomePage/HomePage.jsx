@@ -9,7 +9,7 @@ import {Context} from '../ContextApi/Context'
 
 let debounceTimerForWindowWidth
 
-function HomePage() {
+function HomePage({changeCardAmount}) {
   const [products , setProducts] = useState([])
   const [isLoading , setIsLoading] = useState(false)
   const [error , setError] = useState(undefined)
@@ -161,7 +161,7 @@ function HomePage() {
             {isLoading && <div className='loading'>Loading...</div>}
             {products.map(product => {
               return (
-                <ProductCard key={product._id} info={product} changeSearchText={changeSearchText}/>
+                <ProductCard key={product._id} info={product} changeSearchText={changeSearchText} changeCardAmount={changeCardAmount}/>
               )
             })}
           </div>
