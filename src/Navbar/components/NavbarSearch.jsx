@@ -3,16 +3,19 @@ import './NavbarComponents.css'
 import { useState , useContext, useEffect } from 'react'
 import { http } from '../../Fetch/fetchProducts'
 import { Context } from '../../ContextApi/Context'
+import { useNavigate } from 'react-router'
 
 let debounceTimerForSearch
 
-function NavbarSearch ({onMobile}) {
+function NavbarSearch ({setPath}) {
     const [searchBarValue , setSearchBarValue] = useState('')
     const [searchText , setSearchText] = useState('')
     const [searchResults , setSearchResults] = useState([])
     const [isLoading , setIsLoading] = useState(false)
 
     const {search , changeSearchText} = useContext(Context)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         setSearchBarValue('')
@@ -61,8 +64,10 @@ function NavbarSearch ({onMobile}) {
 
     function showMoreBtnHandler() {
         changeSearchText(searchText)
+        navigate(`./`)
         setSearchBarValue('')
         setSearchText('')
+        setPath('search : ' + searchText)
     }
 
     return (

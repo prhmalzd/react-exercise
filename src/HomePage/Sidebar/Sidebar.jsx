@@ -11,7 +11,7 @@ Sidebar.propTypes = {
     fetchProducts : PropTypes.func
 }
 
-function Sidebar ({products , fetchProducts}) {
+function Sidebar ({products , fetchProducts ,  setPath}) {
     const [categories , setCategories] = useState([])
     const [selectedCateId , setSelectedCateId] = useState('')
 
@@ -42,6 +42,7 @@ function Sidebar ({products , fetchProducts}) {
         }
         fetchProducts(id)
         setSelectedCateId(id)
+        setPath(event.target.textContent)
     }
 
     const categories_items = categories.map((cate) => {

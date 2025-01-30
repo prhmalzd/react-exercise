@@ -13,7 +13,7 @@ Navbar.propTypes = {
     changeTheme : PropTypes.func
 }
 
-function Navbar ({changeTheme , changeCard}) {
+function Navbar ({changeTheme , changeCard , pathName , setPath}) {
     const [isLight , setIsLight] = useState(true)
     const [isMenuOpen , setIsmenuOpen] = useState(false)
 
@@ -32,8 +32,8 @@ function Navbar ({changeTheme , changeCard}) {
         <>
             <nav className='navbar'>
                 <div className='navbar-main'>
-                    <NavbarLogo/>
-                    <NavbarSearch/>
+                    <NavbarLogo setPath={setPath}/>
+                    <NavbarSearch setPath={setPath}/>
                     <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight} changeCard={changeCard}/>
                 </div>
                 <div className='navbar-menu'>
@@ -44,6 +44,7 @@ function Navbar ({changeTheme , changeCard}) {
                 <div className='path-section'>
                     <span>Home /</span>
                     <span>All Categories /</span>
+                    <span>{pathName}</span>
                 </div>
             </nav>
             <div className='navbar-mobile'>
@@ -51,7 +52,7 @@ function Navbar ({changeTheme , changeCard}) {
                     <div className='openMenubtn' onClick={toggleMenu}>{isLight ? menuIconNight : menuIconDay}</div>
                     <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight} changeCard={changeCard}/>
                 </div>
-                <NavbarLogo/>
+                <NavbarLogo setPath={setPath}/>
                 <NavbarSearch onMobile={true}/>
                 {isMenuOpen && <NavbarMobileSideMenu toggleMenu={toggleMenu} isLight={isLight}/>}
             </div>

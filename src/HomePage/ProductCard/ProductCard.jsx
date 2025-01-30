@@ -11,7 +11,7 @@ ProductCard.propTypes = {
   changeCardAmount : PropTypes.func
 }
 
-function ProductCard ({info , changeSearchText , changeCardAmount}) {
+function ProductCard ({info , changeSearchText , changeCardAmount , setPath}) {
   const [cartAmountValue , setCartAmountValue] = useState(0)
 
   const navigate = useNavigate()
@@ -35,6 +35,7 @@ function ProductCard ({info , changeSearchText , changeCardAmount}) {
     navigate(`./product/${info._id}`)
     setProduct(info)
     changeSearchText('')
+    setPath(info.name)
     console.log(info)
   }
   function addToCartClicked () {

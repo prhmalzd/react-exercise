@@ -9,7 +9,7 @@ import {Context} from '../ContextApi/Context'
 
 let debounceTimerForWindowWidth
 
-function HomePage({changeCardAmount}) {
+function HomePage({changeCardAmount , setPath}) {
   const [products , setProducts] = useState([])
   const [isLoading , setIsLoading] = useState(false)
   const [error , setError] = useState(undefined)
@@ -124,13 +124,14 @@ function HomePage({changeCardAmount}) {
   }
 
   function removeSearchTextResult () {
+    setPath('')
     setSearchText('')
     fetchProducts('' , 1 , limitProducts , '')
   }
 
   return (
     <div className='homePageCorrector'>
-        {iswidthBig && <Sidebar products={products} fetchProducts={fetchProducts}/>}
+        {iswidthBig && <Sidebar products={products} fetchProducts={fetchProducts} setPath={setPath}/>}
         <div>
           <div className='products-howtoshow'>
             {
@@ -161,7 +162,7 @@ function HomePage({changeCardAmount}) {
             {isLoading && <div className='loading'>Loading...</div>}
             {products.map(product => {
               return (
-                <ProductCard key={product._id} info={product} changeSearchText={changeSearchText} changeCardAmount={changeCardAmount}/>
+                <ProductCard key={product._id} info={product} changeSearchText={changeSearchText} changeCardAmount={changeCardAmount} setPath={setPath}/>
               )
             })}
           </div>
