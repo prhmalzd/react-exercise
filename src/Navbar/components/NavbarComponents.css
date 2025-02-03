@@ -31,12 +31,13 @@
 .search-results-module {
     position: absolute;
     top: 105px;
-    width: 480px;
+    width: 500px;
     border: 2px solid;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     padding: 10px;
+    z-index: 100;
 }
 .search-results-container {
     display: flex;
@@ -74,3 +75,19 @@
     flex-direction: column;
     gap: 10px;
 }
+
+@media only screen and (max-width : 770px){
+    .search-results-module {
+        top: 140px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .input-search {
+        width: 300px;
+    }
+    .search-results-module {
+        width: 300px;
+        top: 140px;
+    }
+  }

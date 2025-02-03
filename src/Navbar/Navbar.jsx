@@ -50,10 +50,15 @@ function Navbar ({changeTheme , changeCard , pathName , setPath}) {
             <div className='navbar-mobile'>
                 <div className='navbar-mobile-icons'>
                     <div className='openMenubtn' onClick={toggleMenu}>{isLight ? menuIconNight : menuIconDay}</div>
+                    <NavbarLogo setPath={setPath}/>
                     <NavbarIconSection changeThemeHandler={changeThemeHandler} isLight={isLight} changeCard={changeCard}/>
                 </div>
-                <NavbarLogo setPath={setPath}/>
                 <NavbarSearch onMobile={true}/>
+                <div className='path-section'>
+                    <span>Home /</span>
+                    <span>All Categories /</span>
+                    <span>{pathName}</span>
+                </div>
                 {isMenuOpen && <NavbarMobileSideMenu toggleMenu={toggleMenu} isLight={isLight}/>}
             </div>
         </>
