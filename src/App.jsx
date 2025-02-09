@@ -1,40 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
-import Navbar from './Navbar/Navbar'
-import HomePage from './HomePage/HomePage'
-import { Route, Routes } from 'react-router'
-import ProductPage from './ProductPage/ProductPage'
-import LoginPage from './Auth/LoginPage/LoginPage'
-import { ContextProvider } from './ContextApi/Context'
+import Navbar from './Commons/Navbar/Navbar'
+import useFetchProducts from './Functionality/useFetch'
+import Categories from './Pages/Categories/Categories'
 
 function App() {
-  const [isLight , setIsLight] = useState(true)
-  const [changeCard , setChangeCard] = useState(0)
-  const [pathName , setPathName] = useState('')
+  const [search , setSearchText] = useState('')
+  const [page , setPageNumber] = useState(1)
+  const [category , setCategoryID] = useState('')
+  const [limit , setLimitNumber] = useState(10)
+  const [url , setUrl] = useState('https://kaaryar-ecom.liara.run/v1/products')
 
-  function changeTheme (isLight) {
-    setIsLight(isLight)
-  }
-  function changeCardAmount (amount) {
-    setChangeCard(amount)
-  }
-  function setPath (path) {
-    setPathName(path)
+  const {data , loading , error , pagination} = useFetchProducts(url)
+
+  useEffect(() => {
+    const query = {search, page, category, limit}
+    const params = new URLSearchParams(query).toString()
+    setUrl('https://kaaryar-ecom.liara.run/v1/products?' + params)
+  } , [search , page , category , limit])
+
+  function changeQuery (newQuery) {
+    const keys = Object.keys(newQuery)
+    if (keys.includes('search')) setSearchText(newQuery.search)
+    else if (keys.includes('page')) setPageNumber(newQuery.page)
+    else if (keys.includes('category')) setCategoryID(newQuery.category)
+    else if (keys.includes('limit')) setLimitNumber(newQuery.limit)
+    else console.log('hey havaset kojast!')
   }
 
   return (
-    <ContextProvider>
-      <div className={`holder ${isLight ? '' : 'dark-theme'}`}>
-        <Navbar changeTheme={changeTheme} changeCard={changeCard} pathName={pathName} setPath={setPath}/>
-        <div className='container'>
-          <Routes>
-            <Route path='/' element={<HomePage changeCardAmount={changeCardAmount} setPath={setPath}/>}/>
-            <Route path='/product/:productId' element={<ProductPage/>}/>
-            <Route path='/login' element={<LoginPage/>}/>
-          </Routes>
-        </div>
-      </div>
-    </ContextProvider>
+    <>
+      <Navbar changeQuery={changeQuery}/>
+      <Categories changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error}/>
+    </>
   )
 }
 

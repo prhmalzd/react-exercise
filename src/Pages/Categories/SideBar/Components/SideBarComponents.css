@@ -1,0 +1,70 @@
+.categoriesTitles , .categoriesBestSales , .categoriesPrices {
+    border: 2px solid rgb(8, 5, 23);
+    border-radius: 8px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffad8;
+}
+
+.categoriesTitles {
+    flex-direction: column;
+    color: rgb(8, 5, 23);
+    gap: 2px;
+}
+
+.categoriesTitles span {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px 0;
+    transition: all 0.3s;
+}
+
+.categoriesTitles .active {
+    color: #fffad8;
+    background-color: rgb(8, 5, 23);
+}
+
+.categoriesTitles span:hover {
+    color: #fffad8;
+    background-color: rgb(8, 5, 23);
+}
+
+.categoriesPrices {
+    gap: 4px;
+    padding: 8px 4px;
+}
+.categoriesPrices div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+.categoriesPrices input {
+    width: 70%;
+    height: 20px;
+    padding: 0 8px 0;
+    border: none;
+    background-color: #fffad8;
+    border-bottom: 1px solid rgb(8, 5, 23);
+    transition: all 0.3s;
+}
+.categoriesPrices input:focus {
+    border-radius: 4px;
+}
+.categoriesPrices button {
+    width: 30%;
+    height: 20px;
+    padding: 0;
+    border-radius: 4px;
+}
+
+
+.categoriesBestSales {
+    flex-direction: column;
+    gap: 4px;
+}

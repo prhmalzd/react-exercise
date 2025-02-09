@@ -1,0 +1,13 @@
+.Categories {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 8px;
+}

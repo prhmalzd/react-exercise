@@ -1,0 +1,33 @@
+.ProductInRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fffad8;
+    background-color: rgb(8, 5, 23);
+    border-radius: 8px;
+    gap: 4px;
+    font-size: .8rem;
+    width: 100%;
+    padding: 4px 0;
+}
+.ProductInRow .img {
+    width: 20%;
+    background-color: #fffad8;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.ProductInRow .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.ProductInRow .info .title {
+    font-size: .9rem;
+    font-weight: 600;
+}
+.ProductInRow .info .desc {
+    text-align: left;
+    font-size: .7rem;
+}
