@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: start;
+    width: 70vw;
 }
 
 .wrapper {
-    width: 70%;
+    width: 70vw;
     display: flex;
     justify-content: center;
     align-items: start;

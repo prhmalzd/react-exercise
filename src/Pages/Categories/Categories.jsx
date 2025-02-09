@@ -8,7 +8,7 @@ function Categories({changeQuery , products , pages , loading , error}) {
     <div className='Categories'>
         <div className='wrapper'>
             <Sidebar changeQuery={changeQuery}/>
-            <Products products={products} pages={pages} loading={loading} error={error}/>
+            <Products changeQuery={changeQuery} products={products} pages={pages} loading={loading} error={error}/>
         </div>
     </div>
   )

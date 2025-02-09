@@ -18,7 +18,7 @@ function useFetchProducts (url) {
                 const data = await response.json()
                 if (data.products) {
                     setData(data.products)
-                    setPagination(data.pagination.totalItems / data.pagination.totalPages)
+                    setPagination(data.pagination.totalPages)
                 }
                 else {
                     setData(data)

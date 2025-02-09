@@ -1,6 +1,8 @@
 .ProductVerticaly {
     flex: 1 1 calc(33% - 16px);
-    max-width: calc(33%);
+    max-width: 33%;
+    width: 33%;
+    height: 350px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -18,13 +20,42 @@
     background-color: #fffad8;
     border-radius: 8px;
 }
-.ProductVerticaly div {
+.productInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.ProductVerticaly div .title {
+.productInfo .title {
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+.plusMinus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.addToCartSection {
+    width: 80%;
+    position: relative;
+    bottom: 0;
+}
+.plusMinus button {
+    padding: 0;
+    height: 40px;
+    width: 40px;
+}
+
+.removeBtn{
+    height: 30px;
+    padding: 5px 20px;
+    background-color: rgb(153, 18, 18);
+    color: #fffad8;
+}
+.removeBtn:hover {
+    background-color: #fffad8;
+    color:rgb(153, 18, 18);
 }

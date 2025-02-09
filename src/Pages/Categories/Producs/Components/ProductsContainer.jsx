@@ -7,7 +7,7 @@ function ProductsContainer({products , loading , error}) {
   return (
     <div className='ProductsContainer'>
       {loading && <span className='loading'>Loading...</span>}
-      {error && <span className='error'>Error...</span>}
+      {error && <span className='error'>Something went wrong...</span>}
       {products.map((product) => {
         return <ProductVerticaly
           key={product._id}

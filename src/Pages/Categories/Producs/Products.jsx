@@ -3,13 +3,13 @@ import ProductsOptions from './Components/ProductsOptionsToShow'
 import ProductsPagination from './Components/ProductsPagination'
 import './Products.css'
 
-function Products({products , pages , loading , error}) {
+function Products({changeQuery , products , pages , loading , error}) {
 
   return (
     <div className='Products'>
-        <ProductsOptions/>
+        <ProductsOptions changeQuery={changeQuery}/>
         <ProductsContainer products={products} loading={loading} error={error}/>
-        <ProductsPagination pages={pages}/>
+        <ProductsPagination changeQuery={changeQuery} pages={pages}/>
     </div>
   )
 }

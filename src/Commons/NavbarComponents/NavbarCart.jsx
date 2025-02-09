@@ -1,4 +1,3 @@
-
 import './NavbarComponents.css'
 
 function NavbarCart() {
