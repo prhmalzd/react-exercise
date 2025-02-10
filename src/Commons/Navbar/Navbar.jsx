@@ -4,7 +4,7 @@ import NavbarPath from '../NavbarComponents/NavbarPath'
 import NavbarSearch from '../NavbarComponents/NavbarSearch'
 import './Navbar.css'
 
-function Navbar({changeQuery}) {
+function Navbar({cartData , changeQuery}) {
 
   return (
     <>
@@ -13,7 +13,7 @@ function Navbar({changeQuery}) {
         <NavbarPath/>
         <div className='rightNavbar'>
           <NavbarSearch changeQuery={changeQuery}/>
-          <NavbarCart/>
+          <NavbarCart cartData={cartData}/>
         </div>
       </nav>
     </>
