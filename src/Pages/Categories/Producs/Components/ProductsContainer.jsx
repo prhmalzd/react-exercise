@@ -2,7 +2,7 @@
 import ProductVerticaly from '../../../../Commons/ProductFaces/ProductVerticaly'
 import './ProductsComponents.css'
 
-function ProductsContainer({products , loading , error}) {
+function ProductsContainer({passData, products , loading , error}) {
 
   return (
     <div className='ProductsContainer'>
@@ -12,6 +12,7 @@ function ProductsContainer({products , loading , error}) {
         return <ProductVerticaly
           key={product._id}
           info={product}
+          passData={passData}
         />
       })}
     </div>
