@@ -3,16 +3,32 @@ import { useEffect, useState } from 'react'
 import './ProductVerticaly.css'
 import useStorage from '../../Functionality/useStorage'
 
-function ProductVerticaly({info}) {
-  const [amount , setAmount] = useState(0)
+function ProductVerticaly({info ,passData}) {
+  const [amount , setAmount] = useState(null)
 
   const {data} = useStorage(info , amount)
 
   useEffect(() => {
-    if (!localStorage.getItem('products')) {
+    let storagedItems = localStorage.getItem('products')
+    if (storagedItems == null) {
       localStorage.setItem('products' , '{}')
     }
+    else {
+      let items = JSON.parse(localStorage.getItem('products'))
+      for (let item in items) {
+        let key = item
+        let value= items[key]
+        console.log(key , value)
+        if (key == info._id) {
+          setAmount(value[1])
+        }
+      }
+    }
   } , [])
+
+  useEffect(() => {
+    passData(data)
+  } , [data])
 
   function decreaseAmount () {
     if (amount > 0) setAmount(amount => amount-1)
@@ -35,7 +51,7 @@ function ProductVerticaly({info}) {
         <div className='addToCartSection'>
           <div className='plusMinus'>
             <button onClick={decreaseAmount}>-</button>
-            <span>{amount}</span>
+            <span>{amount || 0}</span>
             <button onClick={increaseAmount}>+</button>
           </div>
           {amount > 0 && <button onClick={removeAmount} className='removeBtn'>Remove</button>}
