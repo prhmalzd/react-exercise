@@ -5,17 +5,21 @@ function useStorage (info , amount) {
 
     useEffect(() => {
         let parsedProducts = JSON.parse(localStorage.getItem('products'))
-
-        if (amount == 0) {
-            delete parsedProducts[info._id]
-        }
-        else if (amount > 0) {
-            parsedProducts[info._id] = [info , amount]
+        if(parsedProducts) {
+            if (amount == 0) {
+                delete parsedProducts[info._id]
+            }
+            else if (amount > 0) {
+                parsedProducts[info._id] = [info , amount]
+            }
+            else {
+                return
+            }
+            localStorage.setItem('products' , JSON.stringify(parsedProducts))
+    
+            setData(parsedProducts)
         }
         
-        localStorage.setItem('products' , JSON.stringify(parsedProducts))
-
-        setData(parsedProducts)
     } , [info , amount])
 
     return {data}
