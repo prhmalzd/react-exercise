@@ -7,8 +7,8 @@ function ProductInRow() {
     <div className='ProductInRow'>
         <div className='img'></div>
         <div className='info'>
-            <span className='title'>Dildo</span>
-            <span className='desc'>Big black yummy DILDO!</span>
+            <span className='title'>:)</span>
+            <span className='desc'>NOPE!</span>
         </div>
     </div>
   )
