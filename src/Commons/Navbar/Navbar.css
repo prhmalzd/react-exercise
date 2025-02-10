@@ -9,3 +9,10 @@
     width: 100%;
     color: rgb(8, 5, 23);
 }
+
+.rightNavbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
