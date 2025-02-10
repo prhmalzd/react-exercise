@@ -38,3 +38,14 @@
 }
 
 /* navbar cart */
+
+.cartIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: rgb(121, 23, 23);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
