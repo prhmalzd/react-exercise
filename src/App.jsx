@@ -11,6 +11,8 @@ function App() {
   const [limit , setLimitNumber] = useState(10)
   const [url , setUrl] = useState('https://kaaryar-ecom.liara.run/v1/products')
 
+  const [cartData , setCartData] = useState([])
+
   const {data , loading , error , pagination} = useFetchProducts(url)
 
   useEffect(() => {
@@ -28,10 +30,14 @@ function App() {
     else console.log('hey havaset kojast!')
   }
 
+  function passData (data) {
+    setCartData(data)
+  }
+
   return (
     <>
-      <Navbar changeQuery={changeQuery}/>
-      <Categories changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error}/>
+      <Navbar cartData={cartData} changeQuery={changeQuery}/>
+      <Categories passData={passData} changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error}/>
     </>
   )
 }
