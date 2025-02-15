@@ -1,33 +1,38 @@
 .ProductInRow {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     color: #fffad8;
     background-color: rgb(8, 5, 23);
     border-radius: 8px;
     gap: 4px;
     font-size: .8rem;
-    width: 100%;
-    padding: 4px 0;
+    width: calc(100% - 10px);
+    padding: 4px 5px;
 }
-.ProductInRow .img {
-    width: 20%;
-    background-color: #fffad8;
-    height: 40px;
+.ProductInRow img {
     border-radius: 4px;
 }
 
 .ProductInRow .info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
 }
 .ProductInRow .info .title {
-    font-size: .9rem;
+    text-align: left;
+    font-size: .8rem;
     font-weight: 600;
 }
 .ProductInRow .info .desc {
     text-align: left;
     font-size: .7rem;
+}
+
+@media only screen and (max-width: 1120px) {
+.ProductInRow {
+    flex-direction: column;
+    align-items: center;
+}
 }

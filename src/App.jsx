@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Navbar from './Commons/Navbar/Navbar'
+import NavbarHandler from './Commons/Navbar/NavbarHandler'
 import useFetchProducts from './Functionality/useFetch'
 import Categories from './Pages/Categories/Categories'
 
@@ -14,6 +14,23 @@ function App() {
   const [cartData , setCartData] = useState([])
 
   const {data , loading , error , pagination} = useFetchProducts(url)
+
+  const [width , setWidth] = useState(1200)
+
+  useEffect(() => {
+    handleWidth()
+    window.addEventListener('resize' , handleWidth)
+  } , [])
+  
+  function handleWidth () {
+    setWidth(window.innerWidth)
+    if (window.innerWidth < 665) {
+      setLimitNumber(100)
+    }
+    else {
+      setLimitNumber(10)
+    }
+  }
 
   useEffect(() => {
     const query = {search, page, category, limit}
@@ -36,8 +53,8 @@ function App() {
 
   return (
     <>
-      <Navbar cartData={cartData} changeQuery={changeQuery}/>
-      <Categories passData={passData} changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error}/>
+      <NavbarHandler cartData={cartData} changeQuery={changeQuery} width={width}/>
+      <Categories passData={passData} changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error} width={width}/>
     </>
   )
 }

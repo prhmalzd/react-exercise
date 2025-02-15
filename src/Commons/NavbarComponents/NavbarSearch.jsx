@@ -18,11 +18,15 @@ function NavbarSearch({changeQuery}) {
       changeQuery({search : text})
     } , 800)
   }
+  function removeSearchContent () {
+    setInputSearchValue('')
+    changeQuery({search : ''})
+  }
 
   return (
     <div className='searchBarContainer'>
-      <span className='searchIcon'>0</span>
       <input className='searchInput' type='text' placeholder='search ...' value={inputSearchValue} onInput={changeInputSearchValue}/>
+      {inputSearchValue && <span className='removeSearchContentIcon' onClick={removeSearchContent}>X</span>}
     </div>
   )
 }

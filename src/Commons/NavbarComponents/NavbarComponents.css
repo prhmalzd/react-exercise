@@ -1,6 +1,7 @@
 .logo {
     font-weight: 900;
     font-size: 1.5rem;
+    transition: all 0.3s;
 }
 
 /* navbar path */
@@ -10,6 +11,7 @@
     align-items: center;
     gap: 24px;
     font-weight: 700;
+    transition: all 0.3s;
 }
 
 
@@ -33,8 +35,27 @@
 }
 
 .searchBarContainer input:focus {
-    width: 360px;
+    width: 240px;
     border-radius: 8px;
+}
+
+.removeSearchContentIcon {
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    color: white;
+    font-weight: 900;
+    border: 1px red solid;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+.removeSearchContentIcon:hover {
+    background-color: white;
+    color: red;
 }
 
 /* navbar cart */
@@ -48,4 +69,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.humburgerMenu {
+    width: 100px;
+    height: 100vh;
+    background-color: #fffad8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-right: rgb(8, 5, 23) 2px solid;
+    color: rgb(8, 5, 23);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 64px 40px;
+    gap: 20px;
+    font-weight: 700;
+}
+.humburgerMenu button {
+    padding: 8px 5px;
+    width: 120px;
+}
+
+@media only screen and (max-width: 1500px) {
+    .pathes {
+        font-size: 0.8rem;
+    }
+    .pathes button {
+        padding: 8px 16px;
+    }
+    .logo {
+        font-weight: 900;
+        font-size: 1.2rem;
+    }
 }

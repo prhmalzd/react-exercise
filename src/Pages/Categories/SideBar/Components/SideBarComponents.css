@@ -68,3 +68,9 @@
     flex-direction: column;
     gap: 4px;
 }
+
+@media only screen and (max-width: 1035px) {
+    .categoriesTitles span {
+        font-size: .8rem;
+    }
+}

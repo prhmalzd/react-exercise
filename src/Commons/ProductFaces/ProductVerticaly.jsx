@@ -4,6 +4,7 @@ import './ProductVerticaly.css'
 import useStorage from '../../Functionality/useStorage'
 
 function ProductVerticaly({info ,passData}) {
+
   const [amount , setAmount] = useState(null)
 
   const {data} = useStorage(info , amount)
@@ -42,11 +43,16 @@ function ProductVerticaly({info ,passData}) {
 
   return (
     <div className='ProductVerticaly'>
-        <img src={info.images[0]} width='100px'/>
+        <img src={info.images[0]} width='200px'/>
         <div className='productInfo'>
             <span className='title'>{info.name}</span>
             <span className='desc'>{info.description}</span>
             <span className='price'>{Math.floor(info.price)}</span>
+        </div>
+        <div className='rating'>
+          {Array.from({length : 5}).map((rate , index) => {
+            return <span className={info.rating > index + 1 ? 'rate' : 'unrate'} key={index+'rate'}>*</span>
+          })}
         </div>
         <div className='addToCartSection'>
           <div className='plusMinus'>
@@ -54,7 +60,7 @@ function ProductVerticaly({info ,passData}) {
             <span>{amount || 0}</span>
             <button onClick={increaseAmount}>+</button>
           </div>
-          {amount > 0 && <button onClick={removeAmount} className='removeBtn'>Remove</button>}
+          <button onClick={removeAmount} className={`removeBtn ${amount > 0 ? 'activated' : 'deactivated'}`}>Remove</button>
         </div>
     </div>
   )

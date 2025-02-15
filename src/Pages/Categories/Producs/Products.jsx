@@ -9,7 +9,7 @@ function Products({passData, changeQuery , products , pages , loading , error}) 
     <div className='Products'>
         <ProductsOptions changeQuery={changeQuery}/>
         <ProductsContainer passData={passData} products={products} loading={loading} error={error}/>
-        <ProductsPagination changeQuery={changeQuery} pages={pages}/>
+        {pages > 1 && <ProductsPagination changeQuery={changeQuery} pages={pages}/>}
     </div>
   )
 }

@@ -5,7 +5,7 @@ import CategoriesBestSales from './Components/CategoriesBestSales'
 import './Sidebar.css'
 import useFetchProducts from '../../../Functionality/useFetch'
 
-function Sidebar({changeQuery}) {
+function Sidebar({changeQuery , products}) {
 
   const {data , loading , error , pagination} = useFetchProducts('https://kaaryar-ecom.liara.run/v1/categories')
 
@@ -13,7 +13,7 @@ function Sidebar({changeQuery}) {
     <div className='Sidebar'>
         <CategoriesTitles changeQuery={changeQuery} data={data}/>
         <CategoriesPrices/>
-        <CategoriesBestSales/>
+        <CategoriesBestSales products={products}/>
     </div>
   )
 }

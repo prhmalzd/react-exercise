@@ -1,4 +1,4 @@
-.ProductsOptions , .ProductsContainer , .ProductsPagination {
+.ProductsOptions , .ProductsPagination {
     display: flex;
     align-items: center;
     width: 50vw;
@@ -21,7 +21,11 @@
     font-size: 24px;
 }
 .ProductsContainer {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(250px , 1fr));
+    gap: 16px;
+    width : 50vw;
+    padding: 8px;
 }
 .ProductsContainer .loading , .ProductsContainer .error {
     width: 100%;
