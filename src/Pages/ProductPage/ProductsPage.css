@@ -1,0 +1,82 @@
+.ProductPage {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 70vw;
+    background-color: #fffad8;
+    color: rgb(8, 5, 23);
+    gap: 24px;
+}
+.imageHolder {
+    display: flex;
+    gap: 8px;
+}
+.littleImages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.productInfo .title {
+    font-size: 1.5rem;
+}
+.productRating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ratingStars {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+.ratingStars .rate {
+    color: red;
+}
+
+.priceHolder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.priceHolder .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: red;
+}
+.priceHolder .disprice {
+    text-decoration: line-through;
+}
+.productInfo .description {
+    width: 90%;
+    text-align: left;
+}
+.productInfo .addToCartSection {
+    display: flex;
+    width: 50%;
+    gap: 8px;
+    align-items: center;
+}
+.removeBtn{
+    height: 30px;
+    padding: 5px 20px;
+}
+.addToCartSection .activated:hover {
+    background-color: #fffad8;
+    color:rgb(153, 18, 18);
+}
+
+.addToCartSection .activated {
+    background-color: rgb(153, 18, 18);
+    color: #fffad8;
+}
+.addToCartSection .deactivated {
+    background-color: #fffad8;
+    color: #fffad8;
+    border-color: #fffad8;;
+    cursor: default;
+}

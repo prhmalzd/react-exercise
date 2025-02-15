@@ -3,12 +3,14 @@ import './App.css'
 import NavbarHandler from './Commons/Navbar/NavbarHandler'
 import useFetchProducts from './Functionality/useFetch'
 import Categories from './Pages/Categories/Categories'
+import ProductPage from './Pages/ProductPage/ProductPage'
 
 function App() {
   const [search , setSearchText] = useState('')
   const [page , setPageNumber] = useState(1)
   const [category , setCategoryID] = useState('')
   const [limit , setLimitNumber] = useState(10)
+  
   const [url , setUrl] = useState('https://kaaryar-ecom.liara.run/v1/products')
 
   const [cartData , setCartData] = useState([])
@@ -21,16 +23,6 @@ function App() {
     handleWidth()
     window.addEventListener('resize' , handleWidth)
   } , [])
-  
-  function handleWidth () {
-    setWidth(window.innerWidth)
-    if (window.innerWidth < 665) {
-      setLimitNumber(100)
-    }
-    else {
-      setLimitNumber(10)
-    }
-  }
 
   useEffect(() => {
     const query = {search, page, category, limit}
@@ -47,6 +39,16 @@ function App() {
     else console.log('hey havaset kojast!')
   }
 
+  function handleWidth () {
+    setWidth(window.innerWidth)
+    if (window.innerWidth < 665) {
+      setLimitNumber(100)
+    }
+    else {
+      setLimitNumber(10)
+    }
+  }
+
   function passData (data) {
     setCartData(data)
   }
@@ -55,6 +57,7 @@ function App() {
     <>
       <NavbarHandler cartData={cartData} changeQuery={changeQuery} width={width}/>
       <Categories passData={passData} changeQuery={changeQuery} products={data} pages={pagination} loading={loading} error={error} width={width}/>
+      {/* <ProductPage products={data} passData={passData}/> */}
     </>
   )
 }
