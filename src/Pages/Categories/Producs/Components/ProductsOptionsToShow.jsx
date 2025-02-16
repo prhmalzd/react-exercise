@@ -1,6 +1,6 @@
 import './ProductsComponents.css'
 
-function ProductsOptions({changeQuery}) {
+function ProductsOptions({changeQuery , pages , openFiltersSection}) {
 
   function changeTheLimitationProducts (e) {
     Array.from(e.target.options).map((option) => {
@@ -8,18 +8,22 @@ function ProductsOptions({changeQuery}) {
     })
   }
 
+  function onFilteButtonClicked () {
+    openFiltersSection()
+  }
+
   return (
     <div className='ProductsOptions'>
-        <select onClick={changeTheLimitationProducts} name='howtoshow'>
+        {
+        pages > 1 ? <select onClick={changeTheLimitationProducts} name='howtoshow' className='selectGrid'>
             <option>10</option>
             <option>15</option>
             <option>20</option>
             <option>25</option>
         </select>
-        <div>
-            <span>&</span>
-            <span>#</span>
-        </div>
+        :
+        <button className='openFilters' onClick={onFilteButtonClicked}>Filters</button>
+        }
     </div>
   )
 }

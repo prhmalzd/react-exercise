@@ -53,3 +53,36 @@
 .ProductsPagination span:hover {
     border-color: rgb(8, 5, 23);
 }
+
+
+.selectGrid {
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    padding: 0 1em;
+    color: #fffad8;
+    background-color: rgb(8, 5, 23);
+    background-image: none;
+    cursor: pointer;
+  }
+  .selectGrid {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border-radius: .25rem;
+    overflow: hidden;
+  }
+  .openFilters {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  @media only screen and (max-width: 665px) {
+    .ProductsOptions {
+        justify-content: center;
+    }
+}

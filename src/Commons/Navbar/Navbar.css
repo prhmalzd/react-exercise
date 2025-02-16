@@ -15,10 +15,6 @@
     color: rgb(8, 5, 23);
 }
 .humburgerMenuToggleIcon {
-    width:36px;
-    height: 36px;
-    background-color: rgb(8, 5, 23);
-    border-radius: 12px;
     cursor: pointer;
     position: absolute;
     top: 24px;

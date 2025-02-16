@@ -17,7 +17,7 @@ function App() {
 
   const {data , loading , error , pagination} = useFetchProducts(url)
 
-  const [width , setWidth] = useState(1200)
+  const [width , setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     handleWidth()
@@ -42,10 +42,10 @@ function App() {
   function handleWidth () {
     setWidth(window.innerWidth)
     if (window.innerWidth < 665) {
-      setLimitNumber(100)
+      changeQuery({limit : 100})
     }
     else {
-      setLimitNumber(10)
+      changeQuery({limit : 10})
     }
   }
 

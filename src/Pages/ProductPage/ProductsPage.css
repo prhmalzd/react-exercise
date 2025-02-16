@@ -65,16 +65,16 @@
     height: 30px;
     padding: 5px 20px;
 }
-.addToCartSection .activated:hover {
+.ProductPage .activated:hover {
     background-color: #fffad8;
     color:rgb(153, 18, 18);
 }
 
-.addToCartSection .activated {
+.ProductPage .activated {
     background-color: rgb(153, 18, 18);
     color: #fffad8;
 }
-.addToCartSection .deactivated {
+.ProductPage .deactivated {
     background-color: #fffad8;
     color: #fffad8;
     border-color: #fffad8;;
