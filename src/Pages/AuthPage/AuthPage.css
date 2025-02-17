@@ -1,0 +1,27 @@
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffad8;
+    color: rgb(8, 5, 23);
+    border: solid 2px rgb(8, 5, 23);
+    padding: 36px;
+    border-radius: 16px;
+    gap: 8px;
+}
+
+.emailHolder , .passwordHolder , .usernameHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.authinput {
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid rgb(8, 5, 23);
+    padding-left: 8px;
+}
+.authSubmit {
+    padding: 8px 16px;
+}
